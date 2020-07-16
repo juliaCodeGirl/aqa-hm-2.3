@@ -29,8 +29,8 @@ public class PostmanEcho {
                 .when()
                 .post("/post")
                 .then()
-                .statusCode(400)
-                .body("data", equalTo("User Third"))
+                .statusCode(200)
+                .body("data", equalTo("User Second"))
                 .contentType(ContentType.JSON);
     }
 }
