@@ -1,5 +1,6 @@
 package ru.netology.rest;
 
+import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
@@ -24,10 +25,12 @@ public class PostmanEcho {
         given()
                 .baseUri("https://postman-echo.com")
                 .body("User Second")
+                .header("Content-Type", "application/json")
                 .when()
                 .post("/post")
                 .then()
                 .statusCode(400)
-                .body("data", equalTo("User First"));
+                .body("data", equalTo("User Third"))
+                .contentType(ContentType.JSON);
     }
 }
